@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd  
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-autowire="byName">
+	<bean id="weiPengService" class="com.murdock.sample.web.service.impl.WeiPengServiceImpl" />
+
+	<bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
+		init-method="init">
+		<!--serviceInterface必须配置[String]，为服务对外提供的接口 -->
+		<property name="serviceInterface">
+			<value>com.murdock.sample.web.service.WeiPengService</value>
+		</property>
+		<!--target必须配置[ref]，为需要发布为HSF服务的spring bean id -->
+		<property name="target">
+			<ref bean="weiPengService" />
+		</property>
+	</bean>
+</beans>

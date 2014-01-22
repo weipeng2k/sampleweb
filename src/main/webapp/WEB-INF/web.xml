@@ -35,9 +35,28 @@
 	<servlet-mapping>
 		<servlet-name>SampleServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
-		<url-pattern>*.jsp</url-pattern>
-		<url-pattern>*.jspx</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>SlowServlet</servlet-name>
+		<servlet-class>com.murdock.sample.web.servlet.SlowServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SlowServlet</servlet-name>
+		<url-pattern>/slow.do</url-pattern>
+	</servlet-mapping>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 
 </web-app>
